@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 
 class NeteaseMvSchema(Schema):
-    identifier = fields.Int(requried=True, load_from='id')
+    identifier = fields.Str(requried=True, load_from='id')
     name = fields.Str(requried=True)
     cover = fields.Str(requried=True)
     brs = fields.Dict(requried=True)
@@ -32,7 +32,7 @@ class NeteaseMvSchema(Schema):
 
 
 class NeteaseSongSchema(Schema):
-    identifier = fields.Int(requried=True, load_from='id')
+    identifier = fields.Str(requried=True, load_from='id')
     mvid = fields.Int(requried=True)
     title = fields.Str(required=True, load_from='name')
     duration = fields.Float(required=True)
@@ -76,7 +76,7 @@ class NSongSchemaV3(Schema):
 
 
 class NeteaseAlbumSchema(Schema):
-    identifier = fields.Int(required=True, load_from='id')
+    identifier = fields.Str(required=True, load_from='id')
     name = fields.Str(required=True)
     cover = fields.Str(load_from='picUrl', allow_none=True)
     songs = fields.List(fields.Nested('NeteaseSongSchema'))
@@ -103,7 +103,7 @@ class NAlbumSchemaV3(Schema):
 
 
 class NeteaseArtistSchema(Schema):
-    identifier = fields.Int(required=True, load_from='id')
+    identifier = fields.Str(required=True, load_from='id')
     name = fields.Str()
     cover = fields.Str(load_from='picUrl', allow_none=True)
     songs = fields.List(fields.Nested('NeteaseSongSchema'))
@@ -147,7 +147,7 @@ class NeteasePlaylistSchema(Schema):
 
 
 class NeteaseUserSchema(Schema):
-    identifier = fields.Int(required=True, load_from='id')
+    identifier = fields.Str(required=True, load_from='id')
     name = fields.Str(required=True)
     playlists = fields.List(fields.Nested(NeteasePlaylistSchema))
     fav_playlists = fields.List(fields.Nested(NeteasePlaylistSchema))
